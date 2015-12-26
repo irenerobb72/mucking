@@ -15,3 +15,15 @@ $('#chat-input').on('submit', (e) => {
   }
   $('#chat-input input').val('')
 })
+
+$('#user-login').on('submit', (e) => {
+  e.preventDefault()
+  if ($('#user-login input').val().length) {
+    socket.emit('newuser', $('#user-login input').val())
+    $('#pop-up').hide()
+    $('.modal').hide()
+  } else {
+    $('#user-login input').css('border-color', 'red')
+    $('#user-login').append('<p class="error" >Please add a username scrub</p>')
+  }
+})

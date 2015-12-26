@@ -11,15 +11,22 @@ const latest = []
 
 io.on('connection', (socket) => {
   sockets.push(socket)
+
   latest.forEach((message) => {
     socket.emit('message', message)
   })
+
   socket.on('message', (data) => {
-    latest.push(data)
+    latest.push(socket.userName + ': ' + data)
     if(latest.length > 15) {
       latest.shift()
     }
-    broadcast('message', data)
+    broadcast('message', socket.userName + ': ' + data)
+  })
+
+  socket.on('newuser', (data) => {
+    socket.userName = data
+    broadcast('message', data + ' has joined the channel')
   })
 })
 
