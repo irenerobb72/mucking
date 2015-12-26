@@ -1,0 +1,28 @@
+{
+  "name": "mucking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronmrobb/mucking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronmrobb/mucking/issues"
+  },
+  "homepage": "https://github.com/aaronmrobb/mucking#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "jquery": "^2.1.4",
+    "koa": "^1.1.2",
+    "koa-static": "^1.5.2",
+    "mocha": "^2.3.4",
+    "ramda": "^0.19.0",
+    "socket.io": "^1.3.7"
+  }
+}

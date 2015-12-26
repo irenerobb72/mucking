@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" ng-app>
+  <head>
+    <title>Chat Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="chat-box">
+
+      </div>
+      <form id="chat-input">
+        <input type="text" name="message" id="message">
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
