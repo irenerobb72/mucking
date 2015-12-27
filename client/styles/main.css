@@ -58,7 +58,7 @@ body {
   left: 40%;
   width: 400px;
   height: 250px;
-    z-index: 55;
+  z-index: 55;
 }
 
 #user-login {

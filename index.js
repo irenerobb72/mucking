@@ -11,16 +11,10 @@ const latest = []
 
 io.on('connection', (socket) => {
   sockets.push(socket)
-
-  latest.forEach((message) => {
-    socket.emit('message', message)
-  })
+  latestMessages(socket)
 
   socket.on('message', (data) => {
-    latest.push(socket.userName + ': ' + data)
-    if(latest.length > 15) {
-      latest.shift()
-    }
+    latest.length > 15 ? latest.shift().push(socket.userName + ': ' + data) : latest.push(socket.userName + ': ' + data)
     broadcast('message', socket.userName + ': ' + data)
   })
 
@@ -33,6 +27,12 @@ io.on('connection', (socket) => {
 const broadcast = (event, data) => {
   sockets.forEach((socket) => {
     socket.emit(event, data)
+  })
+}
+
+const latestMessages = (socket) => {
+  latest.forEach((message) => {
+    socket.emit('message', message)
   })
 }
 
