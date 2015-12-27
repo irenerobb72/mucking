@@ -24,6 +24,7 @@ io.on('connection', (socket) => {
   })
 })
 
+//Client utility
 const broadcast = (event, data) => {
   sockets.forEach((socket) => {
     socket.emit(event, data)
