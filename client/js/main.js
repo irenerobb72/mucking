@@ -24,7 +24,7 @@ socket.on('connect', function () {
   })
 })
 
-//Chat Handler
+//Event Functions
 
 const chatInput = (e) => {
   e.preventDefault()
@@ -51,6 +51,7 @@ const hideLogin = () => {
   $('.cust-modal').hide()
 }
 
+//Register Events
 
 $('#chat-input').on('submit', chatInput)
 $('#user-login').on('submit', userLogin)
