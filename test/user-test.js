@@ -19,6 +19,7 @@ describe('User creation test', () => {
     it('does not add second user', () => {
       userFunctions.createUser('aaron')
       userFunctions.createUser('aaron')
+      userFunctions.createUser('aaron')
       expect(storage.load().users.length).to.equal(1)
     })
   })

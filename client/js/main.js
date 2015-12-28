@@ -5,7 +5,7 @@ let localUser
 let chat = document.getElementById('chat-box');
 
 socket.on('connect', function () {
-
+  $('#pop-up').show()
   if (localUser) socket.emit('newuser', localUser)
 
   socket.on('message', function (data) {
@@ -17,6 +17,10 @@ socket.on('connect', function () {
     data.forEach((user) => {
       $('#users').append('<p>' + user.username + '</p>')
     })
+  })
+  socket.on('disconnect', (data) => {
+    localUser = undefined
+    $('.cust-modal').show()
   })
 })
 

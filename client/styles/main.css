@@ -5,8 +5,6 @@ body {
   padding: 25px;
 }
 
-
-
  #chat-box {
   width: 100%;
   height: 500px;
@@ -25,7 +23,8 @@ body {
   font-weight: bold;
 }
 
-#chat-box p:nth-child(2n) {
+#chat-box p:nth-child(2n),
+#users p:nth-child(2n)  {
   background: #eee;
 }
 
@@ -50,6 +49,7 @@ body {
 }
 
 #pop-up {
+  display: none;
   background: #eee;
   position: absolute;
   top: 20%;
@@ -88,8 +88,4 @@ body {
   margin: 0;
   padding:5px 25px;
   font-weight: bold;
-}
-
-#users p:nth-child(2n) {
-  background: #eee;
 }
