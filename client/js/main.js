@@ -20,7 +20,7 @@ socket.on('connect', function () {
   })
   socket.on('command', (data) => {
     data.forEach((item) => {
-      $('#chat-box').append('<p>' + item + '</p>')
+      $('#chat-box').append('<p class="command-response">' + item + '</p>')
     })
   })
   socket.on('doWhisper', (data) => {

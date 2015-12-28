@@ -26,9 +26,9 @@ io.on('connection', (socket) => {
   socket.on('newuser', (data) => {
     socket.user = users.createUser(data)
     currentUsers.push(socket.user)
-    updateUserList(currentUsers)
     sockets.push(socket)
     latestMessages(socket)
+    updateUserList(currentUsers)
     broadcast('message', ['Channel', socket.user.username + ' has joined the channel'])
   })
 
