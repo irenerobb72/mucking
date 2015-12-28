@@ -7,42 +7,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <h2 id="site-title">Get Dunked</h2>
+    <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="center brand-logo">Get Dunked</a>
+
         </div>
       </div>
-      <div class="row">
-          <div class="col s8">
-            <div id="chat-box">
+    </nav>
+    <main>
+      <div class="container">
+        <div class="row">
+            <div class="col s8">
+              <div id="chat-box">
+
+              </div>
+            <form id="chat-input" autocomplete="off">
+              <input type="text" name="message" id="message">
+              <button class="waves-effect waves-light btn red lighten-2" type="submit">Send message</button>
+            </form>
+          </div>
+          <div class="col s4">
+            <div id="users">
 
             </div>
-          <form id="chat-input" autocomplete="off">
-            <input type="text" name="message" id="message">
-            <button class="waves-effect waves-light btn" type="submit">Send message</button>
-          </form>
-        </div>
-        <div class="col s4">
-          <div id="users">
-
+            <aside>
+              Type /help for chat functions
+            </aside>
           </div>
-          <aside>
-            Type /help for chat functions
-          </aside>
         </div>
       </div>
-    </div>
-
-
-
+    </main>
     <div class="cust-modal"></div>
     <div id="pop-up">
       <form id="user-login">
         <label>Username</label>
 
         <input name="username" id="username" type="text">
-        <button class="waves-effect waves-light btn" type="submit">Join Chat</button>
+        <button class="waves-effect waves-light btn red lighten-2" type="submit">Join Chat</button>
       </form>
     </div>
 
