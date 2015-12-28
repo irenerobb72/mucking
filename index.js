@@ -70,7 +70,7 @@ const updateUserList = (data) => {
 
 const whisper = (socket, data) => {
   sockets.forEach((otherSocket) => {
-    if (otherSocket.user.username === data[0]) {
+    if (R.toLower(otherSocket.user.username) === R.toLower(data[0])) {
       otherSocket.emit("whisper", ['Whisper from ' + socket.user.username, data[1]])
     }
   })

@@ -2,7 +2,10 @@
 
 body {
   font-family: 'Open Sans';
-  padding: 25px;
+}
+
+#site-title{
+  margin: 10px 0 0 0;
 }
 
  #chat-box {
