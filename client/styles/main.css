@@ -21,6 +21,10 @@ body {
   padding: 5px;
 }
 
+#chat-box p span {
+  font-weight: bold;
+}
+
 #chat-box p:nth-child(2n) {
   background: #eee;
 }
@@ -34,7 +38,7 @@ body {
   width: 75%;
 }
 
-.modal {
+.cust-modal {
   width: 100%;
   height: 100%;
   position: absolute;

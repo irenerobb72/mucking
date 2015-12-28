@@ -9,13 +9,13 @@ socket.on('connect', function () {
   if (localUser) socket.emit('newuser', localUser)
 
   socket.on('message', function (data) {
-    $('#chat-box').append('<p>' + data + '</p>')
+    $('#chat-box').append('<p>'+ '<span>' + data[0] + '</span>: ' + data[1] + '</p>')
     chat.scrollTop = chat.scrollHeight;
   })
   socket.on('updateUsers', (data) => {
     $('#users').text('')
-    data.forEach((name) => {
-      $('#users').append('<p>' + name + '</p>')
+    data.forEach((user) => {
+      $('#users').append('<p>' + user.username + '</p>')
     })
   })
 })
@@ -42,13 +42,11 @@ const userLogin = (e) => {
   }
 }
 
-
-$('#chat-input').on('submit', chatInput)
-
-$('#user-login').on('submit', userLogin)
-
-
 const hideLogin = () => {
   $('#pop-up').hide()
-  $('.modal').hide()
+  $('.cust-modal').hide()
 }
+
+
+$('#chat-input').on('submit', chatInput)
+$('#user-login').on('submit', userLogin)

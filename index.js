@@ -21,19 +21,22 @@ io.on('connection', (socket) => {
 
   socket.on('message', (data) => {
     if (latest.length > 15) latest.shift()
-    latest.push(socket.user.username + ': ' + data)
-    broadcast('message', socket.user.username + ': ' + data)
+    latest.push([socket.user.username, data])
+    broadcast('message', [socket.user.username, data])
   })
 
   socket.on('newuser', (data) => {
     socket.user = users.createUser(data)
-    broadcast('message', socket.user.username + ' has joined the channel')
-    currentUsers.push(socket.user.username)
+    broadcast('message', ['Channel', socket.user.username + ' has joined the channel'])
+    currentUsers.push(socket.user)
     updateUserList(currentUsers)
   })
 
   socket.on('disconnect', (data) => {
-    currentUsers = R.filter((user) => user != socket.user.username, currentUsers)
+    if(!socket.user){
+      return
+    }
+    currentUsers = R.filter((user) => user.username != socket.user.username, currentUsers)
     broadcast('message', socket.user.username + ' has left the channel')
     updateUserList(currentUsers)
   })
