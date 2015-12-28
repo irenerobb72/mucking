@@ -18,6 +18,17 @@ socket.on('connect', function () {
       $('#users').append('<p>' + user.username + '</p>')
     })
   })
+  socket.on('command', (data) => {
+    data.forEach((item) => {
+      $('#chat-box').append('<p>' + item + '</p>')
+    })
+  })
+  socket.on('doWhisper', (data) => {
+    socket.emit('whisperUser', [data[0], data[1]])
+  })
+  socket.on('whisper', (data) => {
+    $('#chat-box').append('<p class="whisper">'+ '<span>' + data[0] + '</span>: ' + data[1] + '</p>')
+  })
   socket.on('disconnect', (data) => {
     localUser = undefined
     $('.cust-modal').show()
@@ -27,11 +38,33 @@ socket.on('connect', function () {
 //Event Functions
 
 const chatInput = (e) => {
+  let input = $('#chat-input input').val()
   e.preventDefault()
-  if($('#chat-input input').val().length) {
-    socket.emit('message', $('#chat-input input').val())
+  if(input.length && !parseCommand(input)) {
+    socket.emit('message', input)
   }
   $('#chat-input input').val('')
+}
+
+const parseCommand = (input) => {
+  if (input[0] === '/') {
+    input = removeSlash(input)
+    var command = input[0]
+    input.shift()
+    var args = input
+    socket.emit('command', [command, args])
+    return true
+  } else {
+    return false
+  }
+}
+
+const removeSlash = (input) => {
+  input = input.split(' ')
+  input[0] = input[0].split('')
+  input[0].shift()
+  input[0] = input[0].join('')
+  return input
 }
 
 const userLogin = (e) => {

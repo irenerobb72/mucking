@@ -7,6 +7,7 @@ const server = require('http').createServer(app.callback()).listen(3000)
 const io = require('socket.io')(server)
 const users = require('./lib/users')
 const R = require('ramda')
+const commands = require('./lib/interactions').commands
 
 app.use(serve(__dirname + '/client'))
 
@@ -16,9 +17,6 @@ let currentUsers = []
 
 
 io.on('connection', (socket) => {
-  sockets.push(socket)
-  latestMessages(socket)
-
   socket.on('message', (data) => {
     if (latest.length > 15) latest.shift()
     latest.push([socket.user.username, data])
@@ -27,11 +25,22 @@ io.on('connection', (socket) => {
 
   socket.on('newuser', (data) => {
     socket.user = users.createUser(data)
-    broadcast('message', ['Channel', socket.user.username + ' has joined the channel'])
     currentUsers.push(socket.user)
     updateUserList(currentUsers)
+    sockets.push(socket)
+    latestMessages(socket)
+    broadcast('message', ['Channel', socket.user.username + ' has joined the channel'])
   })
 
+  socket.on('command', (data) => {
+    const command = data[0]
+    data.shift()
+    const args = data[0]
+    commands[command].use(socket, args)
+  })
+  socket.on('whisperUser', (data) => {
+    whisper(socket, data)
+  })
   socket.on('disconnect', (data) => {
     if(!socket.user){
       return
@@ -57,6 +66,14 @@ const latestMessages = (socket) => {
 
 const updateUserList = (data) => {
   broadcast('updateUsers', data)
+}
+
+const whisper = (socket, data) => {
+  sockets.forEach((otherSocket) => {
+    if (otherSocket.user.username === data[0]) {
+      otherSocket.emit("whisper", ['Whisper from ' + socket.user.username, data[1]])
+    }
+  })
 }
 
 

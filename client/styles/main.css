@@ -89,3 +89,9 @@ body {
   padding:5px 25px;
   font-weight: bold;
 }
+
+
+/* Special Chat */
+.whisper {
+  color: purple;
+}
