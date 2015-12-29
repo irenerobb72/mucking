@@ -36,7 +36,12 @@ io.on('connection', (socket) => {
     const command = data[0]
     data.shift()
     const args = data[0]
-    commands[command].use(socket, args)
+
+    if (R.filter((key) => key === command, R.keys(commands)).length){
+      commands[command].use(socket, args)
+    } else {
+      socket.emit('err', 'invalid command')
+    }
   })
   socket.on('whisperUser', (data) => {
     whisper(socket, data)

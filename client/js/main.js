@@ -30,6 +30,9 @@ socket.once('connect', function () {
   socket.on('whisper', (data) => {
     $('#chat-box').append('<p class="whisper">'+ '<span>' + data[0] + '</span>: ' + data[1] + '</p>')
   })
+  socket.on('err', (data) => {
+    $('#chat-box').append('<p class="error">'+ '<span>Server</span>: ' + data + '</p>')
+  })
   socket.on('disconnect', (data) => {
     localUser = undefined
     $('.cust-modal').show()

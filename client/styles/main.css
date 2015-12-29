@@ -10,7 +10,6 @@ main {
 
 
  #chat-box {
-
   width: 100%;
   height: 400px;
   max-height: 500px;
@@ -105,5 +104,9 @@ main {
 }
 .command-response {
   color: green;
+  font-weight: bold;
+}
+.error {
+  color: red;
   font-weight: bold;
 }
