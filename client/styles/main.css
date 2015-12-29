@@ -8,6 +8,10 @@ main {
   margin: 50px 0 0 0;
 }
 
+.brand-logo {
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
  #chat-box {
   width: 100%;
@@ -93,7 +97,7 @@ main {
 
 #users p {
   margin: 0;
-  padding:5px 25px;
+  padding:5px 10px;
   font-weight: bold;
 }
 

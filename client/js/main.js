@@ -9,7 +9,8 @@ socket.once('connect', function () {
   if (localUser) socket.emit('newuser', localUser)
 
   socket.on('message', function (data) {
-    $('#chat-box').append('<p>'+ '<span>' + data[0] + '</span>: ' + data[1] + '</p>')
+    $('#chat-box').append('<p>'+ '<span>' + data[0] +
+    '</span>: ' + data[1] + '</p>')
     chat.scrollTop = chat.scrollHeight;
   })
   socket.on('updateUsers', (data) => {
@@ -24,14 +25,17 @@ socket.once('connect', function () {
     })
   })
   socket.on('doWhisper', (data) => {
-    $('#chat-box').append('<p class="whisper">'+ '<span> Whisper to ' + data[0] + '</span>: ' + data[1] + '</p>')
+    $('#chat-box').append('<p class="whisper">'+ '<span> Whisper to ' +
+    data[0] + '</span>: ' + data[1] + '</p>')
     socket.emit('whisperUser', [data[0], data[1]])
   })
   socket.on('whisper', (data) => {
-    $('#chat-box').append('<p class="whisper">'+ '<span>' + data[0] + '</span>: ' + data[1] + '</p>')
+    $('#chat-box').append('<p class="whisper">' +
+     '<span>' + data[0] + '</span>: ' + data[1] + '</p>')
   })
   socket.on('err', (data) => {
-    $('#chat-box').append('<p class="error">'+ '<span>Server</span>: ' + data + '</p>')
+    $('#chat-box').append('<p class="error">' +
+    '<span>Server</span>: ' + data + '</p>')
   })
   socket.on('disconnect', (data) => {
     localUser = undefined
@@ -73,13 +77,16 @@ const removeSlash = (input) => {
 
 const userLogin = (e) => {
   e.preventDefault()
-  if ($('#user-login input').val().length) {
-    localUser = $('#user-login input').val()
-    socket.emit('newuser', $('#user-login input').val())
+  const username = $('#user-login input').val()
+  $('#user-login input').css('border-color', 'transparent')
+  $('#user-login .error').remove()
+  if (username.length && username.indexOf(' ') === -1) {
+    localUser = username
+    socket.emit('newuser', username)
     hideLogin()
   } else {
     $('#user-login input').css('border-color', 'red')
-    $('#user-login').append('<p class="error">Please add a username scrub</p>')
+    $('#user-login').append('<p class="error">Fix it scrub</p>')
   }
 }
 
