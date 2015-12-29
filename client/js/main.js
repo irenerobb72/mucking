@@ -4,7 +4,7 @@ const socket = io.connect()
 let localUser
 let chat = document.getElementById('chat-box');
 
-socket.on('connect', function () {
+socket.once('connect', function () {
   $('#pop-up').show()
   if (localUser) socket.emit('newuser', localUser)
 
@@ -24,6 +24,7 @@ socket.on('connect', function () {
     })
   })
   socket.on('doWhisper', (data) => {
+    $('#chat-box').append('<p class="whisper">'+ '<span> Whisper to ' + data[0] + '</span>: ' + data[1] + '</p>')
     socket.emit('whisperUser', [data[0], data[1]])
   })
   socket.on('whisper', (data) => {
