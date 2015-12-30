@@ -55,16 +55,19 @@ main {
   background-color: #333;
   z-index: 50;
 }
+.pop-modal {
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+z-index: 55;
+}
 
 #pop-up {
-  display: none;
-  background: #eee;
-  position: absolute;
-  top: 20%;
-  left: 40%;
   width: 400px;
-  height: 250px;
-  z-index: 55;
+  margin:250px auto 0 auto;
+  background: #eee;
+
 }
 
 #user-login {

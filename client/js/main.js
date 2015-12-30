@@ -91,7 +91,7 @@ const userLogin = (e) => {
 }
 
 const hideLogin = () => {
-  $('#pop-up').hide()
+  $('.pop-modal').hide()
   $('.cust-modal').hide()
 }
 

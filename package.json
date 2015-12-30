@@ -1,8 +1,8 @@
 {
   "name": "mucking",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple chat server with some user functionality",
+  "main": "server.js",
   "scripts": {
     "test": "mocha"
   },
