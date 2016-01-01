@@ -1,6 +1,9 @@
 {
   "name": "mucking",
   "version": "1.0.0",
+  "engines": {
+  "node": "5.2.0"
+},
   "description": "Simple chat server with some user functionality",
   "main": "server.js",
   "scripts": {
