@@ -3,7 +3,7 @@
 const koa = require('koa')
 const app = koa()
 const serve = require('koa-static')
-const server = require('http').createServer(app.callback()).listen(3000)
+const server = require('http').createServer(app.callback()).listen(process.env.PORT || 3000)
 const io = require('socket.io')(server)
 const users = require('./lib/users')
 const R = require('ramda')
