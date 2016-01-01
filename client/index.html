@@ -3,8 +3,8 @@
   <head>
     <title>Get Dunked</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
   </head>
   <body>
     <nav>
@@ -18,19 +18,25 @@
     <main>
       <div class="container">
         <div class="row">
-            <div class="col s8">
+            <div class="col s8 mobile-grow">
               <div id="chat-box">
 
               </div>
             <form id="chat-input" autocomplete="off">
-              <input type="text" name="message" id="message" tabindex="1">
+              <input type="text" name="message" id="chat-message" tabindex="1">
               <button class="waves-effect waves-light btn red lighten-2" type="submit">Send message</button>
             </form>
           </div>
-          <div class="col s4">
-            <div id="users">
+          <div class="col s4 mobile-hide">
+            <div class="users-wrapper">
+              <div class="users-header red lighten-2">
+                <h4>DunkCity Residents</h4>
+              </div>
+              <div id="users">
 
+              </div>
             </div>
+
             <aside>
               Type /help for chat functions
             </aside>

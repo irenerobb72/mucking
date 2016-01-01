@@ -9,29 +9,30 @@ socket.once('connect', function () {
   if (localUser) socket.emit('newuser', localUser)
 
   socket.on('message', function (data) {
-    $('#chat-box').append('<p>'+ '<span>' + data[0] +
+    $('#chat-box').append('<p>' + '<span>' + data[0] +
     '</span>: ' + data[1] + '</p>')
     chat.scrollTop = chat.scrollHeight;
   })
   socket.on('updateUsers', (data) => {
     $('#users').text('')
-    data.forEach((user) => {
-      $('#users').append('<p>' + user.username + '</p>')
-    })
+    userList(data)
   })
   socket.on('command', (data) => {
     data.forEach((item) => {
       $('#chat-box').append('<p class="command-response">' + item + '</p>')
     })
+    chat.scrollTop = chat.scrollHeight;
   })
   socket.on('doWhisper', (data) => {
     $('#chat-box').append('<p class="whisper">'+ '<span> Whisper to ' +
     data[0] + '</span>: ' + data[1] + '</p>')
+    chat.scrollTop = chat.scrollHeight;
     socket.emit('whisperUser', [data[0], data[1]])
   })
   socket.on('whisper', (data) => {
     $('#chat-box').append('<p class="whisper">' +
      '<span>' + data[0] + '</span>: ' + data[1] + '</p>')
+     chat.scrollTop = chat.scrollHeight;
   })
   socket.on('err', (data) => {
     $('#chat-box').append('<p class="error">' +
@@ -73,6 +74,14 @@ const removeSlash = (input) => {
   input[0].shift()
   input[0] = input[0].join('')
   return input
+}
+
+const userList = (users) => {
+  users.forEach((user) => {
+    const newest = users.indexOf(user) === users.length - 1
+    user = '<p>' + user.username + '</p>'
+    newest ? $(user).hide().appendTo('#users').fadeIn(1000) : $(user).appendTo('#users')
+  })
 }
 
 const userLogin = (e) => {
