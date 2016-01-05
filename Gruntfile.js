@@ -22,10 +22,10 @@ module.exports = function(grunt) {
     sass: {
        dist: {
          options: {
-           style: 'compressed'
+           style: 'expanded'
          },
          files: {
-           'client/styles/min.css': 'styles/main.scss'
+           'client/styles/main.min.css': 'styles/main.scss'
          }
        }
     }
