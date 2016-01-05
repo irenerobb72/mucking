@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+$lightgrey : #eeeeee;
+$darkGrey : rgb(238, 238, 238);
+$uiRed : rgb(229, 115, 115);
+$offWhite : #F5F5F5;
+
+body {
+  font-family: 'Open Sans';
+}
+
+main {
+  margin: 50px 0 0 0;
+}
+
+.brand-logo {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#chat-box {
+  width: 100%;
+  height: 400px;
+  max-height: 500px;
+  overflow-y: scroll;
+  background: #F5F5F5;
+  border: 2px solid #eee;
+
+  p {
+    margin: 0;
+    padding: 5px;
+
+    &:nth-child(2n) {
+      background: $lightgrey;
+    }
+    &.whisper {
+      color: purple;
+    }
+    &.command-response {
+      color: green;
+      font-weight: bold;
+    }
+    &.error {
+      color: red;
+      font-weight: bold;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+#chat-input {
+  #chat-message {
+    &:focus {
+      border-bottom: 1px solid $uiRed;
+      box-shadow: 0 1px 0 $uiRed;
+    }
+  }
+}
+
+.users-wrapper {
+  max-height: 400px;
+  min-height: 400px;
+  margin-bottom: 20px;
+  background-color: $offWhite;
+  .users-header {
+    h4 {
+      margin: 0;
+      text-align: center;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-size: 1rem;
+      line-height: 2.5rem;
+    }
+  }
+  #users {
+    border: 2px solid $darkGrey;
+    border-top: none;
+    min-height: 363px;
+    width: 100%;
+    overflow-y: scroll;
+    p {
+      margin: 0;
+      padding: 5px 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cust-modal {
+  @extend .modal;
+  z-index: 50;
+  opacity: .5;
+  background-color: #333;
+}
+
+.pop-modal {
+  @extend .modal;
+  z-index: 55;
+  #pop-up {
+    width: 400px;
+    margin: 250px auto 0 auto;
+    background: $lightgrey;
+    #user-login {
+      padding: 50px;
+      .error {
+        color: $uiRed;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+      }
+      input {
+        margin: 0 auto 25px auto;
+        width: 100%;
+        line-height: 40px;
+        display: block;
+        font-size: 24px;
+        &:focus {
+          border-bottom: 1px solid $uiRed;
+          box-shadow: 0 1px 0 $uiRed;
+        }
+      }
+    }
+  }
+}

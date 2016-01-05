@@ -1,0 +1,11 @@
+
+[0m[0m
+[0m  User creation test[0m
+[0m    loads new username to database[0m
+[2K[0G    [32m  ✓[0m[90m loads database with one entry[0m
+[0m    User already exists[0m
+[2K[0G    [32m  ✓[0m[90m does not add second user[0m[33m (38ms)[0m
+
+
+[92m [0m[32m 2 passing[0m[90m (86ms)[0m
+
