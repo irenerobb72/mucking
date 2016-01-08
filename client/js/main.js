@@ -69,11 +69,7 @@ const parseCommand = (input) => {
 }
 
 const removeSlash = (input) => {
-  input = input.split(' ')
-  input[0] = input[0].split('')
-  input[0].shift()
-  input[0] = input[0].join('')
-  return input
+  return input.replace('/', '').split(' ')
 }
 
 const userList = (users) => {
