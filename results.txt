@@ -1,11 +1,23 @@
 
 [0m[0m
-[0m  User creation test[0m
+[0m  Chat functions[0m
+[0m    [0m
+    [36m  - loads database with one entry[0m
+[0m    User already exists[0m
+    [36m  - does not add second user[0m
+
+[0m  User Creation Functions[0m
 [0m    loads new username to database[0m
 [2K[0G    [32m  ✓[0m[90m loads database with one entry[0m
 [0m    User already exists[0m
 [2K[0G    [32m  ✓[0m[90m does not add second user[0m
 
+[0m  User search functions[0m
+[0m    Finds user by username[0m
+[2K[0G    [32m  ✓[0m[90m It returns correct user[0m
+[2K[0G    [32m  ✓[0m[90m Returns no user if it does not exist[0m
 
-[92m [0m[32m 2 passing[0m[90m (16ms)[0m
+
+[92m [0m[32m 4 passing[0m[90m (20ms)[0m
+[36m [0m[36m 2 pending[0m
 
