@@ -51,7 +51,7 @@ io.on('connection', (socket) => {
       return
     }
     currentUsers = R.filter((user) => user.username != socket.user.username, currentUsers)
-    broadcast('message', socket.user.username + ' has left the channel')
+    broadcast('message', [socket.user.username, data])
     updateUserList(currentUsers)
   })
 })
